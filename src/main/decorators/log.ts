@@ -1,6 +1,6 @@
 import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
 
-export class LogControllerDecoration implements Controller {
+export class LogControllerDecorator implements Controller {
   private readonly controller: Controller
 
   constructor (controller: Controller) {
