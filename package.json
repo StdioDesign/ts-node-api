@@ -13,7 +13,7 @@
     "test:ci": "npm test -- --coverage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Darlan Nascimento",
   "license": "ISC",
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
