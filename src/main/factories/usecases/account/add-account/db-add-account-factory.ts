@@ -1,11 +1,11 @@
 import { AccountMongoRepository } from '../../../../../infra/db/mongodb/account/account-mongo-repository'
-import { LoadAccountByToken } from '../../../../../domain/usecases/load-account-by-token'
-import { DbLoadAccountByToken } from '../../../../../data/usecases/load-account-by-token/db-load-account-by-token'
-import { JwtAdapter } from '../../../../../infra/criptography/jwt-adapter/jwt-adapter'
-import env from '../../../../config/env'
+import { BcryptAdapter } from '../../../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
+import { AddAccount } from '../../../../../domain/usecases/add-account'
+import { DbAddAccount } from '../../../../../data/usecases/add-account/db-add-account'
 
-export const makeDdLoadAccountByToken = (): LoadAccountByToken => {
-  const jwtAdapter = new JwtAdapter(env.jwtSecret)
+export const makeDdAddAccount = (): AddAccount => {
+  const salt = 12
+  const bcryptAdapter = new BcryptAdapter(salt)
   const accountMongoRepository = new AccountMongoRepository()
-  return new DbLoadAccountByToken(jwtAdapter, accountMongoRepository)
+  return new DbAddAccount(bcryptAdapter, accountMongoRepository, accountMongoRepository)
 }
