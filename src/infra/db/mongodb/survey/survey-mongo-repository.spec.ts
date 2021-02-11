@@ -56,8 +56,7 @@ describe('Survey Mongo Repository', () => {
           answer: 'other_answer'
         }],
         date: new Date()
-      }
-      ])
+      }])
       const sut = makeSut()
       const surveys = await sut.loadAll()
       expect(surveys.length).toBe(2)
